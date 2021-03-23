@@ -8,6 +8,9 @@ export default Component.extend(
       droppable: false,
       draggable: false,
       layerable: false
+    },
+    toHTML() {
+      return this.get('content');
     }
   },
   {
