@@ -10,7 +10,7 @@ export default Component.extend(
       layerable: false
     },
     toHTML() {
-      return this.get('content');
+      return '<script>' + this.get('content') + '</script>';
     }
   },
   {

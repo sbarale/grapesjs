@@ -32926,7 +32926,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     layerable: false
   }),
   toHTML: function toHTML() {
-    return this.get('content');
+    return '<script>' + this.get('content') + '</script>';
   }
 }, {
   isComponent: function isComponent(el) {
@@ -38979,7 +38979,7 @@ var defaultConfig = {
   editors: editors,
   plugins: plugins,
   // Will be replaced on build
-  version: '0.16.13',
+  version: '0.16.14',
 
   /**
    * Initialize the editor with passed options
