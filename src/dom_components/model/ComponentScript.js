@@ -10,7 +10,17 @@ export default Component.extend(
       layerable: false
     },
     toHTML() {
-      return '<script>' + this.get('content') + '</script>';
+      let str_src = '';
+      let str_onload = '';
+      if (this.attributes.src) {
+        str_src = 'src="' + this.attributes.src + '"';
+      }
+      if (this.attributes.onload) {
+        str_onload = 'onload="' + this.attributes.onload + '"';
+      }
+      var append = (' ' + str_src + ' ' + str_onload).replace('  ', '');
+      var retval = '<script' + append + '>' + this.get('content') + '</script>';
+      return retval;
     }
   },
   {
@@ -22,7 +32,6 @@ export default Component.extend(
           result.src = el.src;
           result.onload = el.onload;
         }
-
         return result;
       }
     }

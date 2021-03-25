@@ -32926,7 +32926,20 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     layerable: false
   }),
   toHTML: function toHTML() {
-    return '<script>' + this.get('content') + '</script>';
+    var str_src = '';
+    var str_onload = '';
+
+    if (this.attributes.src) {
+      str_src = 'src="' + this.attributes.src + '"';
+    }
+
+    if (this.attributes.onload) {
+      str_onload = 'onload="' + this.attributes.onload + '"';
+    }
+
+    var append = (' ' + str_src + ' ' + str_onload).replace('  ', '');
+    var retval = '<script' + append + '>' + this.get('content') + '</script>';
+    return retval;
   }
 }, {
   isComponent: function isComponent(el) {
@@ -38979,7 +38992,7 @@ var defaultConfig = {
   editors: editors,
   plugins: plugins,
   // Will be replaced on build
-  version: '0.16.14',
+  version: '1.2.5',
 
   /**
    * Initialize the editor with passed options
